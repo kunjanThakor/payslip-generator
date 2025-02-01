@@ -1,0 +1,56 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+}
+
+.container {
+    max-width: 600px;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+#payslipOutput {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.table-bordered th,
+.table-bordered td {
+    border: 1px solid black !important;
+}
+
+.table th,
+.table td {
+    padding: 8px;
+    text-align: left;
+}
+
+.table th {
+    background-color: #d3d3d3;
+}
+
+.total-section {
+    margin-top: 20px;
+}
+
+.total-section p {
+    margin: 0;
+}
+
+.total-section .number {
+    font-weight: bold;
+}
+
+.total-section .words {
+    font-weight: bold;
+    text-decoration: underline;
+}
