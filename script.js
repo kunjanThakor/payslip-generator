@@ -152,18 +152,16 @@ function numberToWords(num) {
     return "Number too large";
 }
 
-function forceDesktopMode() {
-    // Create a new meta tag for viewport
-    const viewportMeta = document.createElement('meta');
-    viewportMeta.name = 'viewport';
-    viewportMeta.content = 'width=1024';  // Force a fixed width to simulate desktop
-
-    // Append the new meta tag to the head of the document
-    document.head.appendChild(viewportMeta);
-
-    // Optionally, you can also change the user-agent for fetch or AJAX requests, 
-    // but this will not affect the display of the page itself.
+function forceDesktopModeOnMobile() {
+    // Check if the user is on a mobile device (simple user-agent check)
+    if (/Mobi|Android/i.test(navigator.userAgent)) {
+        // Create and append the desktop viewport meta tag
+        const viewportMeta = document.createElement('meta');
+        viewportMeta.name = 'viewport';
+        viewportMeta.content = 'width=1024'; // Simulate desktop mode
+        document.head.appendChild(viewportMeta);
+    }
 }
 
-// Call the function to apply desktop mode
-forceDesktopMode();
+// Call the function to force desktop mode on mobile devices
+forceDesktopModeOnMobile();
