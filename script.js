@@ -151,3 +151,19 @@ function numberToWords(num) {
     if (num < 1000000) return numberToWords(Math.floor(num / 1000)) + " Thousand " + numberToWords(num % 1000);
     return "Number too large";
 }
+
+function forceDesktopMode() {
+    // Create a new meta tag for viewport
+    const viewportMeta = document.createElement('meta');
+    viewportMeta.name = 'viewport';
+    viewportMeta.content = 'width=1024';  // Force a fixed width to simulate desktop
+
+    // Append the new meta tag to the head of the document
+    document.head.appendChild(viewportMeta);
+
+    // Optionally, you can also change the user-agent for fetch or AJAX requests, 
+    // but this will not affect the display of the page itself.
+}
+
+// Call the function to apply desktop mode
+forceDesktopMode();
