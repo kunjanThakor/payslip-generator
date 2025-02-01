@@ -93,20 +93,49 @@ function generatePayslip() {
 }
 
 function saveAsPDF() {
+    // const payslip = document.getElementById("payslipContent");
+    // const saveBtn = document.getElementById("savePdfBtn");
+    // saveBtn.style.display = "none"; // Hide button before saving PDF
+
+    // html2canvas(payslip, { scale: 3 }).then(canvas => { // Increase scale for better quality
+    //     const imgData = canvas.toDataURL("image/png");
+    //     const { jsPDF } = window.jspdf;
+    //     const pdf = new jsPDF("p", "mm", "a4");
+    //     const imgWidth = 190;
+    //     const imgHeight = (canvas.height * imgWidth) / canvas.width;
+    //     pdf.addImage(imgData, "PNG", 10, 10, imgWidth, imgHeight);
+    //     pdf.save("Payslip.pdf");
+    //     saveBtn.style.display = "block"; // Show button again after saving PDF
+    // });
+
     const payslip = document.getElementById("payslipContent");
     const saveBtn = document.getElementById("savePdfBtn");
-    saveBtn.style.display = "none"; // Hide button before saving PDF
+    saveBtn.style.display = "none"; // Hide the button before saving the PDF
 
-    html2canvas(payslip, { scale: 3 }).then(canvas => { // Increase scale for better quality
+    // Check if the device is mobile and adjust the scale accordingly
+    const isMobile = window.innerWidth <= 768; // Mobile screen detection (you can adjust this threshold)
+    const scaleValue = isMobile ? 2 : 3; // Use a lower scale for mobile to avoid overflow
+
+    // Use html2canvas to render the payslip content as an image
+    html2canvas(payslip, { scale: scaleValue }).then(canvas => {
         const imgData = canvas.toDataURL("image/png");
+
+        // Create a jsPDF instance to generate the PDF
         const { jsPDF } = window.jspdf;
-        const pdf = new jsPDF("p", "mm", "a4");
+        const pdf = new jsPDF("p", "mm", "a4");  // A4-sized PDF in portrait orientation
+
         const imgWidth = 190;
         const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+        // Add the generated image to the PDF
         pdf.addImage(imgData, "PNG", 10, 10, imgWidth, imgHeight);
+
+        // Save the PDF with the filename "Payslip.pdf"
         pdf.save("Payslip.pdf");
-        saveBtn.style.display = "block"; // Show button again after saving PDF
+
+        saveBtn.style.display = "block"; // Show the save button again after the PDF is generated
     });
+
 }
 
 
