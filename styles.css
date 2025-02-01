@@ -54,3 +54,28 @@ body {
     font-weight: bold;
     text-decoration: underline;
 }
+
+
+@media print {
+    body {
+        font-size: 12px;
+        /* Adjust font size for better readability */
+        margin: 0;
+    }
+
+    .payslipContent {
+        width: 100% !important;
+        /* Ensure full width */
+        overflow: visible !important;
+        /* Prevent clipping */
+    }
+
+    table {
+        width: 100% !important;
+        /* Make sure the table takes full width */
+        table-layout: fixed;
+        /* Force table layout to make it more responsive */
+    }
+
+    /* Add more rules as necessary to fit the content on the page */
+}
